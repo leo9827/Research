@@ -8,7 +8,7 @@ tags:
 
 划分依赖于时间。具体来说，数据是否在一个窗口中是根据数据元素的时间戳（Timestamp）和窗口的定义来确定的。
 
-### 添加timestamp
+### 自定义元素 timestamp
 自定义给PCollection中的元素添加timestamp
 ```java
         // 使用WithTimestamps转换函数为元素添加时间戳
@@ -131,6 +131,18 @@ PCollection<Integer> numbers = ...;
 PCollection<Integer> sumPerWindow = numbers.apply(Window.into(SlidingWindows.of(Duration.standardMinutes(10))
     .every(Duration.standardMinutes(5))))
     .apply(Sum.integersGlobally());
+```
+
+默认参数说明
+将时间戳分配到半开区间中，形式为\[N * period, N * period + size)，其中0为纪元时间。
+如果未调用every方法，则period默认为给定持续时间较小的最大时间单位。例如，指定一个大小为5秒的时间间隔将导致默认的period为1秒。
+```java
+// example
+PCollection<Integer> items = ...;  PCollection<Integer> windowedItems = items.apply(    Window.<Integer>into(SlidingWindows.of(Duration.standardMinutes(10))));
+/**  
+ * Assigns timestamps into half-open intervals of the form [N * period, N * period + size), where * 0 is the epoch. * * <p>If {@link SlidingWindows#every} is not called, the period defaults to the largest time unit  
+ * smaller than the given duration. For example, specifying a size of 5 seconds will result in a * default period of 1 second. */
+public static SlidingWindows of(Duration size)
 ```
 ### Session Window（会话时间窗口）
 根据数据的活动会话（session）将数据流划分为窗口。会话是指一段连续的活动时间，超过一定的间隔时间后，会话被视为结束。会话时间窗口可以用于基于用户活动或交互的分析场景。
