@@ -3,6 +3,57 @@ tags:
   - bigdata
   - beam
 ---
+## Overview
+### Element-wise 逐元素
+
+|Transform 转换|Description 描述(描述)|
+|---|---|
+|[Filter  筛选](https://beam.apache.org/documentation/transforms/java/elementwise/filter)|Given a predicate, filter out all elements that don't satisfy the predicate.  <br>给定一个谓词，过滤掉所有不满足该谓词的元素。|
+|[FlatMapElements  平面展开元素](https://beam.apache.org/documentation/transforms/java/elementwise/flatmapelements)|Applies a function that returns a collection to every element in the input and outputs all resulting elements.  <br>应用一个函数，该函数将集合返回到输入中的每个元素并输出所有结果元素。|
+|[Keys  按键](https://beam.apache.org/documentation/transforms/java/elementwise/keys)|Extracts the key from each element in a collection of key-value pairs.  <br>从键值对集合中的每个元素中提取键。|
+|[KvSwap  Kv交换](https://beam.apache.org/documentation/transforms/java/elementwise/kvswap)|Swaps(交换) the key and value of each element in a collection of key-value pairs.  <br>交换键值对集合中每个元素的键和值。|
+|[MapElements  映射为元素](https://beam.apache.org/documentation/transforms/java/elementwise/mapelements)|Applies a function to every element in the input and outputs the result.  <br>将函数应用于输入中的每个元素并输出结果。|
+|[ParDo  帕多](https://beam.apache.org/documentation/transforms/java/elementwise/pardo)|The most-general mechanism(机制) for applying a user-defined `DoFn` to every element in the input collection.  <br>将用户定义的 `DoFn` 应用到输入集合中的每个元素的最通用机制。|
+|[Partition  分割](https://beam.apache.org/documentation/transforms/java/elementwise/partition)|Routes each input element to a specific output collection based on some partition function.  <br>根据某些分区函数将每个输入元素路由到特定的输出集合。|
+|[Regex  正则表达式](https://beam.apache.org/documentation/transforms/java/elementwise/regex)|Filters input string elements based on a regex. May also transform them based on the matching groups.  <br>基于正则表达式过滤输入字符串元素。还可以根据匹配组对它们进行转换。|
+|[Reify  具体化](https://beam.apache.org/documentation/transforms/java/elementwise/reify)|Transforms for converting between explicit(显式) and implicit(隐式) form of various Beam values.  <br>用于在各种 Beam 值的显式和隐式形式之间进行转换的变换。|
+|[ToString  转字符串](https://beam.apache.org/documentation/transforms/java/elementwise/tostring)|Transforms every element in an input collection to a string.  <br>将输入集合中的每个元素转换为字符串。|
+|[WithKeys  带Key](https://beam.apache.org/documentation/transforms/java/elementwise/withkeys)|Produces a collection containing each element from the input collection converted to a key-value pair, with a key selected by applying a function to the input element.  <br>生成一个集合，其中包含转换为键值对的输入集合中的每个元素，并通过将函数应用于输入元素来选择键。|
+|[WithTimestamps  带时间戳](https://beam.apache.org/documentation/transforms/java/elementwise/withtimestamps)|Applies a function to determine a timestamp to each element in the output collection, and updates the implicit(隐式) timestamp associated(关联) with each input. Note that it is only safe to adjust timestamps forwards.  <br>应用函数来确定输出集合中每个元素的时间戳，并更新与每个输入关联的隐式时间戳。请注意，只有向前调整时间戳才是安全的。|
+|[Values  值](https://beam.apache.org/documentation/transforms/java/elementwise/values)|Extracts the value from each element in a collection of key-value pairs.  <br>从键值对集合中的每个元素中提取值。|
+
+### Aggregation 聚合
+
+|Transform 转换|Description 描述(描述)|
+|---|---|
+|[ApproximateQuantiles  近似分位数](https://beam.apache.org/documentation/transforms/java/aggregation/approximatequantiles)|Uses an approximation algorithm to estimate the data distribution(分布) within each aggregation using a specified number of quantiles.  <br>使用近似算法通过指定数量的分位数来估计每个聚合内的数据分布。|
+|[ApproximateUnique  近似唯一](https://beam.apache.org/documentation/transforms/java/aggregation/approximateunique)|Uses an approximation algorithm to estimate the number of unique elements within each aggregation.  <br>使用近似算法来估计每个聚合中唯一元素的数量。|
+|[CoGroupByKey  按键共同分组](https://beam.apache.org/documentation/transforms/java/aggregation/cogroupbykey/)|Similar to `GroupByKey`, but groups values associated(关联) with each key into a batch of a given size  <br>与 `GroupByKey` 类似，但将与每个键关联的值分组到给定大小的批次中|
+|[Combine  结合](https://beam.apache.org/documentation/transforms/java/aggregation/combine)|Transforms to combine elements according to a provided `CombineFn`.  <br>根据提供的 `CombineFn` 转换为组合元素。|
+|[CombineWithContext  与上下文结合](https://beam.apache.org/documentation/transforms/java/aggregation/combinewithcontext)|An extended version of Combine which allows accessing side-inputs and other context.  <br>组合的扩展版本，允许访问侧面输入和其他上下文。|
+|[Count  数数](https://beam.apache.org/documentation/transforms/java/aggregation/count)|Counts the number of elements within each aggregation.  <br>计算每个聚合中的元素数量。|
+|[Distinct 去重](https://beam.apache.org/documentation/transforms/java/aggregation/distinct)|Produces a collection containing distinct(鲜明) elements from the input collection.  <br>生成一个包含来自输​​入集合的不同元素的集合。|
+|[GroupByKey  按键分组](https://beam.apache.org/documentation/transforms/java/aggregation/groupbykey)|Takes a keyed collection of elements and produces a collection where each element consists of a key and all values associated(关联) with that key.  <br>获取带键的元素集合并生成一个集合，其中每个元素都包含一个键以及与该键关联的所有值。|
+|[GroupIntoBatches  分组](https://beam.apache.org/documentation/transforms/java/aggregation/groupintobatches)|Batches values associated(关联) with keys into `Iterable` batches of some size. Each batch contains elements associated(关联) with a specific key.  <br>将与键关联的值批量分成一定大小的 `Iterable` 批次。每个批次包含与特定键关联的元素。|
+|[HllCount  希尔计数](https://beam.apache.org/documentation/transforms/java/aggregation/hllcount)|Estimates the number of distinct(鲜明) elements and creates re-aggregatable sketches(素描) using the HyperLogLog++ algorithm.  <br>估计不同元素的数量并使用 HyperLogLog++ 算法创建可重新聚合的草图。|
+|[Latest  最新的](https://beam.apache.org/documentation/transforms/java/aggregation/latest)|Selects the latest element within each aggregation according to the implicit(隐式) timestamp.  <br>根据隐式时间戳选择每个聚合中的最新元素。|
+|[Max  最大限度](https://beam.apache.org/documentation/transforms/java/aggregation/max)|Outputs the maximum element within each aggregation.  <br>输出每个聚合内的最大元素。|
+|[Mean  意思是](https://beam.apache.org/documentation/transforms/java/aggregation/mean)|Computes the average within each aggregation.  <br>计算每个聚合内的平均值。|
+|[Min  最小](https://beam.apache.org/documentation/transforms/java/aggregation/min)|Outputs the minimum element within each aggregation.  <br>输出每个聚合中的最小元素。|
+|[Sample  样本](https://beam.apache.org/documentation/transforms/java/aggregation/sample)|Randomly(随机) select some number of elements from each aggregation.  <br>从每个聚合中随机选择一些元素。|
+|[Sum  和](https://beam.apache.org/documentation/transforms/java/aggregation/sum)|Compute the sum of elements in each aggregation.  <br>计算每个聚合中元素的总和。|
+|[Top  顶部](https://beam.apache.org/documentation/transforms/java/aggregation/top)|Compute the largest element(s) in each aggregation.  <br>计算每个聚合中的最大元素。|
+
+### Other 其他
+
+|Transform 转换|Description 描述(描述)|
+|---|---|
+|[Create  创造](https://beam.apache.org/documentation/transforms/java/other/create)|Creates a collection from an in-memory list.  <br>从内存中的列表创建集合。|
+|[Flatten 展平(扁平化)](https://beam.apache.org/documentation/transforms/java/other/flatten)|Given multiple input collections, produces a single output collection containing all elements from all of the input collections.  <br>给定多个输入集合，生成一个包含所有输入集合中的所有元素的输出集合。|
+|[PAssert  断言](https://beam.apache.org/documentation/transforms/java/other/passert)|A transform to assert(断言) the contents of a `PCollection` used as part of testing a pipeline either locally or with a runner.  <br>用于断言 `PCollection` 内容的转换，用作本地或运行程序测试管道的一部分。|
+|[View  看法](https://beam.apache.org/documentation/transforms/java/other/view)|Operations for turning a collection into view that may be used as a side-input to a `ParDo`.  <br>将集合转换为可用作 `ParDo` 侧输入的视图的操作。|
+|[Window  窗户](https://beam.apache.org/documentation/transforms/java/other/window)|Logically(逻辑) divides up or groups the elements of a collection into finite(有限) windows according to a provided `WindowFn`.  <br>根据提供的 `WindowFn` 将集合的元素逻辑地划分或分组到有限窗口中。|
+
 
 *大道万千，变换无穷*
 ## Pipelien Design
@@ -111,6 +162,7 @@ Combine Transform 需要指定一个 CombineFn，用于指定如何对输入集�
 2. `addInput(accumulator, input)`: 将输入元素 input 合并到累加器 accumulator 中，并返回更新后的累加器。
 3. `mergeAccumulators(accumulators)`: 将多个累加器 accumulators 进行合并，并返回一个合并后的累加器。
 4. `extractOutput(accumulator)`: 从累加器 accumulator 中提取最终的聚合结果，并返回。
+#### Combining a PCollection into a single value
 ##### Combine.globally
 将一组元素合并为一个单一的结果。例如，计算数字的总和：
 ```java
@@ -125,6 +177,13 @@ PCollection<KV<String, Integer>> data = ...;
 PCollection<KV<String, Double>> averagePerKey = data.apply(Combine.perKey(new AverageFn()));
 ```
 其中，`AverageFn` 是自定义的聚合函数，用于计算平均值。
+
+##### Combine and non-global windowing
+
+如果您的 PCollection 使用任何非全局窗口功能，Beam 不会提供默认行为。应用 Combine 时必须指定以下选项之一：
+- 指定 .withoutDefaults，即输入 PCollection 中为空的窗口在**输出集合中同样为空**。
+- 指定 .asSingletonView，在这种情况下，输出将立即转换为 PCollectionView，在作为侧输入使用时，它将为每个空窗口提供默认值。一般来说，只有当管道组合的结果将在管道的稍后部分用作侧输入时，才需要使用该选项。
+
 #### Flatten（扁平化）
 将多个输入集合合并为单个输出集合。适用于合并多个数据源的情况。例如，合并两个整数集合：
 ```java
@@ -156,6 +215,15 @@ PCollection<Integer> reshuffledNumbers = numbers.apply(Reshuffle.viaRandomKey())
 Side Input 是 DoFn 每次处理输入 PCollection 中的元素时可以访问的额外输入。当指定一个 Side Input  时，就创建了一个其他数据视图，可以在处理每个元素时从 ParDo 变换的 DoFn 中读取。
 
 如果 ParDo 需要在处理输入 PCollection 中的每个元素时注入附加数据，但**附加数据需要在运行时确定**（而不是硬编码），那么 Side Input  就非常有用。这些值可能由输入数据决定，也可能取决于 Pipeline 的不同分支。
+
+>PCollectionView\<T> 是 PCollection 的不可变视图，作为类型 T 的值，可以作为 ParDo 转换的Side Input(侧面输入)进行访问。
+>
+>PCollectionView 应该始终是 org.apache.beam.sdk.transforms.PTransform 的输出。 此转换和每个 PipelineRunner 共同负责以特定于运行器的方式实现视图。
+>
+>最常见的情况是使用视图转换来准备 PCollection 用作 ParDo 的侧面输入。 有关 SDK 中可用的特定视图的更多详细信息，请参阅 [[View.asSingleton]]()、[[View.asIterable]]() 和 [[View.asMap]]()。
+>
+>注意：视图方法不应被视为用户可访问。 它们是 Runner 如何获取构建视图所需信息的实现细节，并且可能随时更改。
+
 #### Passing side inputs to ParDo
 ```java
   // Pass side inputs to your ParDo transform by invoking .withSideInputs.
@@ -192,11 +260,13 @@ Side Input 是 DoFn 每次处理输入 PCollection 中的元素时可以访问�
 
 Beam **使用主输入元素的窗口来查找侧输入元素的相应窗口。** Beam 会将主输入元素的窗口投射到侧输入元素的窗口集，然后从生成的窗口中使用侧输入元素。如果主输入和侧输入的窗口完全相同，则投影会提供完全对应的窗口。但是，如果输入窗口不同，Beam 会使用投影来选择最合适的侧输入窗口。
 
-例如，如果主输入使用一分钟的固定时间窗口，而侧输入使用一小时的固定时间窗口，Beam 会根据侧输入窗口集投射主输入窗口，并从适当的一小时侧输入窗口中选择侧输入值。
+**例如，如果主输入使用一分钟的固定时间窗口，而侧输入使用一小时的固定时间窗口，Beam 会根据侧输入窗口集投射主输入窗口，并从适当的一小时侧输入窗口中选择侧输入值。**
 
 如果主输入元素存在于多个窗口中，那么 processElement 会被多次调用，每个窗口调用一次。每次调用 processElement 都会投射主输入元素的 "当前 "窗口，因此每次都可能提供不同的侧输入视图。
 
 如果侧输入有多次触发，Beam 会使用最近一次触发的值。如果使用带有单个全局窗口的侧输入并指定了 Trigger，这一点尤其有用。
+#### Side input Case resolve
+[[Beam Transform Sideinput]] 
 ### Additional outputs
 #### Split（分割）
 Split Transform 用于将数据集按照指定的条件分割成多个数据集。
@@ -419,6 +489,80 @@ PCollection<Long> counts = input.apply(Combine.globally(new MyCountFn()));
 - `mergeAccumulators()`：合并多个累加器，将它们的值相加。
 - `extractOutput()`：从最终累加器中提取计数结果。
 将自定义的计数逻辑应用于输入的`PCollection`，使用`Combine.globally()`将计数应用于全局范围，生成一个包含计数结果的新的`PCollection`。
+
+## Testing
+See Testing Guide here：[Test Your Pipeline](https://beam.apache.org/documentation/pipelines/test-your-pipeline/) .  and [Testing I/O Transforms in Apache Beam](https://beam.apache.org/documentation/io/testing/)
+
+PTransform test example code:
+```java
+public class PipelineTest {  
+    @Rule  
+    public final transient TestPipeline pl = TestPipeline.create();  
+  		/*  
+		## Testing Transforms
+		1.Create a TestPipeline.  
+		2.Create some static, known test input data.  
+		3.Use the Create transform to create a PCollection of your input data.  
+		4.Apply your transform to the input PCollection and save the resulting output PCollection.  
+		5.Use PAssert and its subclasses to verify that the output PCollection contains the elements that you expect.  
+		*/
+    @Test  
+    public void pipeline() {  
+		String[] word_arr = new String[]{  
+                "hi", "there", "hi", "hi", "sue", "bob",  
+                "hi", "sue", "", "", "ZOW", "bob", ""  
+        };  
+        List<String> words = Arrays.asList(word_arr);  
+        PCollection<String> input = pl.apply(Create.of(words));  
+        PCollection<KV<String, Long>> count = input.apply(Count.<String>perElement());  
+        // 这里有一点：必须列出所有的结果，比如如果下面这里没有 KV.of("", 3L) 就会报错 not_matched
+        PAssert.that(count).containsInAnyOrder(  
+                KV.of("hi", 4L),  
+                KV.of("there", 1L),  
+                KV.of("sue", 2L),  
+                KV.of("bob", 2L),  
+                KV.of("ZOW", 1L),  
+                KV.of("", 3L)  
+        );  
+        pl.run();  
+    }
+}
+```
+
+**Testing the WordCount Pipeline**
+```java
+public class WordCountTest {
+
+    // Our static input data, which will comprise the initial PCollection.
+    static final String[] WORDS_ARRAY = new String[] {
+      "hi there", "hi", "hi sue bob",
+      "hi sue", "", "bob hi"};
+
+    static final List<String> WORDS = Arrays.asList(WORDS_ARRAY);
+
+    // Our static output data, which is the expected data that the final PCollection must match.
+    static final String[] COUNTS_ARRAY = new String[] {
+        "hi: 5", "there: 1", "sue: 2", "bob: 2"};
+
+    // Example test that tests the pipeline's transforms.
+
+    public void testCountWords() throws Exception {
+      Pipeline p = TestPipeline.create();
+
+      // Create a PCollection from the WORDS static input data.
+      PCollection<String> input = p.apply(Create.of(WORDS));
+
+      // Run ALL the pipeline's transforms (in this case, the CountWords composite transform).
+      PCollection<String> output = input.apply(new CountWords());
+
+      // Assert that the output PCollection matches the COUNTS_ARRAY known static output data.
+      PAssert.that(output).containsInAnyOrder(COUNTS_ARRAY);
+
+      // Run the pipeline.
+      p.run();
+    }
+}
+```
 
 ## Refrence
 1 [Beam: PTransform Style Guide PTransform 风格指南](https://beam.apache.org/contribute/ptransform-style-guide/).
